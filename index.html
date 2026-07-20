@@ -182,7 +182,7 @@
             document.getElementById('loading').classList.remove('hidden');
             document.getElementById('resultBox').classList.add('hidden');
 
-            const promptText = `Analyze this plant/leaf image carefully. Identify the plant and return strictly JSON without markdown formatting:
+            const promptText = `Analyze this plant/leaf image carefully. Identify the plant and return strictly JSON without markdown ticks:
 {
   "name": "Indian Common Name in Hindi / English",
   "botanical": "Scientific Name",
@@ -191,55 +191,40 @@
   "warning": "Safety details in Hindi"
 }`;
 
-            // Valid modern Gemini 2.5 Flash endpoints
-            const endpoints = [
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`,
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
-            ];
+            // Targeted Free Tier Supported Model URL
+            const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
-            let lastErrorMessage = "";
-            let success = false;
+            try {
+                const response = await fetch(targetUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: promptText },
+                                { inlineData: { mimeType: selectedMime, data: selectedBase64 } }
+                            ]
+                        }]
+                    })
+                });
 
-            for (let url of endpoints) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{
-                                parts: [
-                                    { text: promptText },
-                                    { inlineData: { mimeType: selectedMime, data: selectedBase64 } }
-                                ]
-                            }]
-                        })
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        let text = data.candidates[0].content.parts[0].text;
-                        text = text.replace(/```json/g, '').replace(/```/g, '').trim();
-                        const parsed = JSON.parse(text);
-                        
-                        document.getElementById('loading').classList.add('hidden');
-                        document.getElementById('resultBox').classList.remove('hidden');
-                        renderReport(parsed);
-                        success = true;
-                        break;
-                    } else {
-                        const errData = await response.json();
-                        lastErrorMessage = errData.error?.message || "HTTP Error: " + response.status;
-                    }
-                } catch (e) {
-                    lastErrorMessage = e.message || "Network request failed";
-                }
-            }
-
-            if (!success) {
                 document.getElementById('loading').classList.add('hidden');
                 document.getElementById('resultBox').classList.remove('hidden');
-                showError(lastErrorMessage);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    let text = data.candidates[0].content.parts[0].text;
+                    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+                    const parsed = JSON.parse(text);
+                    renderReport(parsed);
+                } else {
+                    const errData = await response.json();
+                    showError(errData.error?.message || "Quota ya key verify nahi ho paayi.");
+                }
+            } catch (err) {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('resultBox').classList.remove('hidden');
+                showError("Network Request Failed. Please check connection.");
             }
         }
 
