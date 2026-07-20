@@ -191,8 +191,8 @@
   "warning": "Safety details in Hindi"
 }`;
 
-            // Updated strictly to standard v1 API for gemini-1.5-flash
-            const targetUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // Updated to use v1beta with gemini-2.0-flash which supports new user keys
+            const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
             try {
                 const response = await fetch(targetUrl, {
@@ -219,7 +219,7 @@
                     renderReport(parsed);
                 } else {
                     const errData = await response.json();
-                    showError(errData.error?.message || "Verify API key or endpoint.");
+                    showError(errData.error?.message || "API request failed.");
                 }
             } catch (err) {
                 document.getElementById('loading').classList.add('hidden');
