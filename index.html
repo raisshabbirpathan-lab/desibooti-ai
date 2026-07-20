@@ -191,8 +191,8 @@
   "warning": "Safety details in Hindi"
 }`;
 
-            // Targeted Free Tier Supported Model URL
-            const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // Corrected active Gemini 2.5 endpoint
+            const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
             try {
                 const response = await fetch(targetUrl, {
