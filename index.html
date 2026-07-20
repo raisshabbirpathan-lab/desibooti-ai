@@ -19,7 +19,6 @@
             }
         }
     </script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -36,9 +35,6 @@
         .glow-effect {
             box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);
         }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
@@ -57,28 +53,19 @@
                     <p class="text-[10px] text-gray-400 mt-0.5">Real Multimodal AI Leaf & Plant Recognition</p>
                 </div>
             </div>
-            
-            <div class="flex items-center gap-2">
-                <button onclick="openHistoryModal()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-2 rounded-xl border border-gray-700 transition flex items-center gap-1.5">
-                    <span>📜 Saved Scans</span>
-                </button>
-            </div>
         </div>
     </header>
 
     <!-- Main Content Area -->
     <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow space-y-6">
 
-        <!-- Banner Info Card -->
-        <div class="glass-panel p-4 rounded-2xl border-emerald-500/20 bg-gradient-to-r from-emerald-950/30 to-transparent flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="text-2xl">🌱</span>
-                <div>
-                    <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">True AI Plant Recognition</h2>
-                    <p class="text-xs text-gray-300">Har photo ko Gemini AI visually dekh kar asli pehchan batayega.</p>
-                </div>
+        <!-- API Key Input Bar (Safe & Permanent) -->
+        <div class="glass-panel p-4 rounded-2xl border-emerald-500/20 flex flex-col sm:flex-row gap-3 items-center justify-between">
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <span class="text-lg">🔑</span>
+                <span class="text-xs font-semibold text-gray-300">Gemini API Key:</span>
             </div>
-            <span class="hidden md:inline-block text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full">Vision Engine Active</span>
+            <input type="password" id="userApiKey" placeholder="aistudio.google.com se key yahan daalein" class="w-full sm:flex-1 bg-gray-900 border border-gray-700 text-xs text-emerald-400 px-3 py-2 rounded-xl focus:outline-none focus:border-emerald-500">
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -91,9 +78,11 @@
                         Photo Select Karein
                     </h3>
 
+                    <!-- File Input -->
+                    <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleImageSelect(event)">
+
                     <!-- Dropzone -->
-                    <div id="dropZone" onclick="document.getElementById('fileInput').click()" class="w-full border-2 border-dashed border-gray-700 hover:border-emerald-500 transition-all rounded-2xl p-6 cursor-pointer bg-gray-900/40 flex flex-col items-center text-center group">
-                        <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleImageSelect(event)">
+                    <div id="dropZone" onclick="document.getElementById('fileInput').click()" class="w-full border-2 border-dashed border-gray-700 hover:border-emerald-500 transition-all rounded-2xl p-8 cursor-pointer bg-gray-900/40 flex flex-col items-center text-center group">
                         <div class="w-14 h-14 bg-emerald-600/10 text-emerald-400 group-hover:scale-110 transition-transform rounded-2xl flex items-center justify-center mb-3 text-2xl border border-emerald-500/20">
                             📸
                         </div>
@@ -101,23 +90,18 @@
                         <p class="text-[11px] text-gray-400 mt-1">Paudhe, Patti, Sabzi ya Booti ki clear photo daalein</p>
                     </div>
 
-                    <!-- Image Preview -->
+                    <!-- Image Preview Container -->
                     <div id="previewContainer" class="mt-4 hidden space-y-3">
-                        <div class="relative rounded-2xl overflow-hidden border border-gray-700 shadow-lg group">
-                            <img id="imagePreview" class="w-full h-52 object-cover">
-                            <button onclick="resetScanner()" class="absolute top-2 right-2 bg-black/70 hover:bg-red-600 text-white p-1.5 rounded-full text-xs transition backdrop-blur-sm">
-                                ❌ Badlein
+                        <div class="relative rounded-2xl overflow-hidden border border-gray-700 shadow-lg">
+                            <img id="imagePreview" class="w-full h-52 object-cover" alt="Selected Plant Image">
+                            <button onclick="resetScanner()" class="absolute top-2 right-2 bg-black/70 hover:bg-red-600 text-white px-3 py-1 rounded-full text-xs transition backdrop-blur-sm">
+                                ❌ Change Photo
                             </button>
                         </div>
-                        <button id="scanBtn" onclick="analyzePlant()" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-2xl shadow-lg shadow-emerald-900/40 transition-all text-sm flex items-center justify-center gap-2">
+                        <button id="scanBtn" onclick="analyzePlant()" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-2xl shadow-lg transition-all text-sm flex items-center justify-center gap-2">
                             <span>🔍 Real AI Vision Scan</span>
                         </button>
                     </div>
-                </div>
-
-                <div class="mt-6 pt-4 border-t border-gray-800 text-[11px] text-gray-500 flex justify-between">
-                    <span>🔒 Powered by Gemini 2.5 Flash</span>
-                    <span>⚡ Accurate Results</span>
                 </div>
             </div>
 
@@ -130,23 +114,15 @@
 
                 <!-- Loading Animation -->
                 <div id="loading" class="hidden flex-grow flex flex-col items-center justify-center py-16 space-y-4">
-                    <div class="relative w-12 h-12">
-                        <div class="absolute inset-0 rounded-full border-4 border-emerald-500/20"></div>
-                        <div class="absolute inset-0 rounded-full border-4 border-emerald-500 border-t-transparent animate-spin"></div>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-xs text-emerald-400 font-bold tracking-wide">AI Photo ko Visually Analyze kar raha hai...</p>
-                        <p class="text-[10px] text-gray-500 mt-1">Sahi species aur Ayurvedic report taiyar ho rahi hai</p>
-                    </div>
+                    <div class="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-xs text-emerald-400 font-bold">AI Photo Analyze kar raha hai...</p>
                 </div>
 
                 <!-- Initial Placeholder -->
                 <div id="resultBox" class="flex-grow flex flex-col justify-center items-center text-center border border-gray-800/80 rounded-2xl p-6 bg-gray-900/20">
-                    <div class="w-12 h-12 rounded-full bg-gray-800 text-gray-500 flex items-center justify-center text-xl mb-3">
-                        🌿
-                    </div>
+                    <div class="w-12 h-12 rounded-full bg-gray-800 text-gray-500 flex items-center justify-center text-xl mb-3">🌿</div>
                     <p class="text-sm font-medium text-gray-300">Abhi tak koi scan nahi kiya gaya</p>
-                    <p class="text-xs text-gray-500 mt-1 max-w-xs">Left side se patti ya paudhe ki photo upload karke scan button dabayein.</p>
+                    <p class="text-xs text-gray-500 mt-1 max-w-xs">Photo select karke scan button dabayein.</p>
                 </div>
             </div>
 
@@ -155,16 +131,25 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-800 py-4 text-center text-xs text-gray-500">
-        <p>DesiBooti AI Pro © 2026. Powered by Gemini Multimodal Vision.</p>
+        <p>DesiBooti AI Pro © 2026</p>
     </footer>
 
-    <!-- JavaScript Core Logic -->
+    <!-- JavaScript Logic -->
     <script>
-        // ⚠️ APNI NAYI GEMINI API KEY NEECHE PASTE KAREIN:
-        const GEMINI_API_KEY = "YAHAN_APNI_KEY_PASTE_KAREIN";
-
         let selectedBase64 = "";
         let selectedMime = "image/jpeg";
+
+        // Auto Load / Save API key from localStorage
+        window.onload = function() {
+            const savedKey = localStorage.getItem("desibooti_api_key");
+            if (savedKey) {
+                document.getElementById("userApiKey").value = savedKey;
+            }
+        };
+
+        document.getElementById("userApiKey").addEventListener("input", function(e) {
+            localStorage.setItem("desibooti_api_key", e.target.value.trim());
+        });
 
         function handleImageSelect(event) {
             const file = event.target.files[0];
@@ -176,7 +161,7 @@
                     document.getElementById('imagePreview').src = e.target.result;
                     document.getElementById('dropZone').classList.add('hidden');
                     document.getElementById('previewContainer').classList.remove('hidden');
-                }AQ.Ab8RN6JNGYzLPZ6wycMUFir3NiS_cbAlzT4SFyBs1C_Q7K4yMQ
+                };
                 reader.readAsDataURL(file);
             }
         }
@@ -189,29 +174,32 @@
             document.getElementById('resultBox').innerHTML = `
                 <div class="w-12 h-12 rounded-full bg-gray-800 text-gray-500 flex items-center justify-center text-xl mb-3">🌿</div>
                 <p class="text-sm font-medium text-gray-300">Abhi tak koi scan nahi kiya gaya</p>
-                <p class="text-xs text-gray-500 mt-1 max-w-xs">Left side se patti ya paudhe ki photo upload karke scan button dabayein.</p>
+                <p class="text-xs text-gray-500 mt-1 max-w-xs">Photo select karke scan button dabayein.</p>
             `;
-            document.getElementById('resultBox').classList.add('items-center', 'text-center');
         }
 
         async function analyzePlant() {
+            const apiKey = document.getElementById("userApiKey").value.trim();
+            if (!apiKey) {
+                alert("Kripya pehle Upar apni Gemini API Key paste karein!");
+                return;
+            }
             if (!selectedBase64) return;
 
             document.getElementById('loading').classList.remove('hidden');
             document.getElementById('resultBox').classList.add('hidden');
 
-            const promptText = `Analyze this image carefully. Identify the exact plant, leaf, fruit, or vegetable shown in the picture.
-Provide the output strictly in valid JSON format without markdown code blocks:
+            const promptText = `Analyze this plant/leaf image. Return strictly JSON:
 {
-  "name": "Indian Common Name in Hindi / Hinglish (e.g. Aam / Mango)",
-  "botanical": "Scientific Botanical Name",
-  "benefits": ["Ayurvedic benefit 1 in Hindi", "Ayurvedic benefit 2 in Hindi", "Ayurvedic benefit 3 in Hindi"],
-  "usage": "Ayurvedic usage / Istemal ka tarika in Hindi",
-  "warning": "Safety warning / Savdhani in Hindi"
+  "name": "Indian Common Name in Hindi / English",
+  "botanical": "Scientific Name",
+  "benefits": ["Benefit 1 in Hindi", "Benefit 2 in Hindi"],
+  "usage": "Usage details in Hindi",
+  "warning": "Safety details in Hindi"
 }`;
 
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -229,67 +217,51 @@ Provide the output strictly in valid JSON format without markdown code blocks:
 
                 if (response.ok) {
                     const data = await response.json();
-                    let responseText = data.candidates[0].content.parts[0].text;
-                    responseText = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-                    const parsed = JSON.parse(responseText);
-
-                    renderReport(parsed.name, parsed.botanical, parsed.benefits, parsed.usage, parsed.warning);
+                    let text = data.candidates[0].content.parts[0].text;
+                    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+                    const parsed = JSON.parse(text);
+                    renderReport(parsed);
                 } else {
-                    showError("Key verify nahi ho payi. Google AI Studio par ek nayi API key banakar update karein.");
+                    const err = await response.json();
+                    showError(err.error?.message || "Invalid API Key!");
                 }
-
             } catch (err) {
                 document.getElementById('loading').classList.add('hidden');
                 document.getElementById('resultBox').classList.remove('hidden');
-                showError("Connection error. Kripya apna network check karke dobara try karein.");
+                showError("Network / Server Error. Please retry.");
             }
         }
 
         function showError(msg) {
             document.getElementById('resultBox').innerHTML = `
                 <div class="text-center p-4">
-                    <div class="w-12 h-12 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mx-auto mb-3 border border-amber-500/20">⚠️</div>
-                    <p class="text-amber-400 font-bold text-xs mb-1">Notice</p>
-                    <p class="text-gray-400 text-xs">${msg}</p>
+                    <p class="text-amber-400 font-bold text-xs">⚠️ Alert</p>
+                    <p class="text-gray-400 text-xs mt-1">${msg}</p>
                 </div>
             `;
-            document.getElementById('resultBox').classList.add('items-center', 'text-center');
         }
 
-        function renderReport(name, botanical, benefits, usage, warning) {
-            let benefitsListHTML = benefits.map(b => `<li>${b}</li>`).join('');
-
-            const htmlContent = `
+        function renderReport(data) {
+            const benefitsList = data.benefits.map(b => `<li>${b}</li>`).join('');
+            document.getElementById('resultBox').innerHTML = `
             <div class="space-y-4 text-left w-full">
-                <div class="bg-emerald-500/10 border border-emerald-500/30 p-3.5 rounded-2xl flex justify-between items-center">
-                    <div>
-                        <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">AI Verified Plant Match</span>
-                        <h4 class="text-gray-100 font-bold text-base mt-0.5">${name}</h4>
-                        <p class="text-[11px] text-gray-400 italic">Scientific: ${botanical}</p>
-                    </div>
-                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-xl font-bold border border-emerald-500/30">100% Match</span>
+                <div class="bg-emerald-500/10 border border-emerald-500/30 p-3.5 rounded-2xl">
+                    <h4 class="text-gray-100 font-bold text-base">${data.name}</h4>
+                    <p class="text-[11px] text-gray-400 italic">Scientific: ${data.botanical}</p>
                 </div>
-                
-                <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>✨</span> Ayurvedic Fayde:</h5>
-                    <ul class="list-disc pl-4 text-gray-300 text-xs space-y-1">
-                        ${benefitsListHTML}
-                    </ul>
+                <div>
+                    <h5 class="text-xs font-bold text-emerald-400">✨ Fayde:</h5>
+                    <ul class="list-disc pl-4 text-gray-300 text-xs">${benefitsList}</ul>
                 </div>
-
-                <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>🍵</span> Istemal Ka Tarika:</h5>
-                    <p class="text-xs text-gray-300 bg-gray-900/50 p-2.5 rounded-xl border border-gray-800">${usage}</p>
+                <div>
+                    <h5 class="text-xs font-bold text-emerald-400">🍵 Istemal:</h5>
+                    <p class="text-xs text-gray-300 bg-gray-900/50 p-2 rounded-xl border border-gray-800">${data.usage}</p>
                 </div>
-
-                <div class="bg-red-500/10 border border-red-500/30 p-3.5 rounded-2xl">
-                    <h5 class="text-xs font-bold text-red-400 flex items-center gap-1.5 mb-1"><span>⚠️</span> Savdhani & Warnings:</h5>
-                    <p class="text-[11px] text-red-200">${warning}</p>
+                <div class="bg-red-500/10 border border-red-500/30 p-3 rounded-xl">
+                    <h5 class="text-xs font-bold text-red-400">⚠️ Savdhani:</h5>
+                    <p class="text-[11px] text-red-200">${data.warning}</p>
                 </div>
             </div>`;
-
-            document.getElementById('resultBox').innerHTML = htmlContent;
-            document.getElementById('resultBox').classList.remove('items-center', 'text-center');
         }
     </script>
 </body>
