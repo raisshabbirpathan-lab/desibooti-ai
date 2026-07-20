@@ -182,7 +182,7 @@
             document.getElementById('loading').classList.remove('hidden');
             document.getElementById('resultBox').classList.add('hidden');
 
-            const promptText = `Analyze this plant/leaf image carefully. Identify the plant and return strictly JSON:
+            const promptText = `Analyze this plant/leaf image carefully. Identify the plant and return strictly JSON without markdown formatting:
 {
   "name": "Indian Common Name in Hindi / English",
   "botanical": "Scientific Name",
@@ -191,10 +191,11 @@
   "warning": "Safety details in Hindi"
 }`;
 
+            // Valid modern Gemini 2.5 Flash endpoints
             const endpoints = [
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`,
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
             ];
 
             let lastErrorMessage = "";
@@ -245,7 +246,7 @@
         function showError(msg) {
             document.getElementById('resultBox').innerHTML = `
                 <div class="text-center p-4">
-                    <p class="text-amber-400 font-bold text-xs mb-1">⚠️ Debug Details</p>
+                    <p class="text-amber-400 font-bold text-xs mb-1">⚠️ Notice</p>
                     <p class="text-gray-300 text-xs font-mono bg-black/50 p-2.5 rounded-xl border border-amber-500/30 break-all">${msg}</p>
                 </div>
             `;
