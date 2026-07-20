@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesiBooti AI Pro - Global Plant & Herbal Vision Engine</title>
+    <title>DesiBooti AI Pro - High Precision Vision Engine</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -52,9 +52,9 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-200 leading-none">
-                        DesiBooti <span class="text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30">GLOBAL ENGINE</span>
+                        DesiBooti <span class="text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30">FAST VISION</span>
                     </h1>
-                    <p class="text-[10px] text-gray-400 mt-0.5">Duniya Ke Sabhi Ped, Paudhe, Sabziyan & Herbal Species Identification</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">High-Speed Plant & Herbal Identification Engine</p>
                 </div>
             </div>
             
@@ -72,13 +72,13 @@
         <!-- Banner Info Card -->
         <div class="glass-panel p-4 rounded-2xl border-emerald-500/20 bg-gradient-to-r from-emerald-950/30 to-transparent flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <span class="text-2xl">🌍</span>
+                <span class="text-2xl">🌱</span>
                 <div>
-                    <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Universal Plant Coverage</h2>
-                    <p class="text-xs text-gray-300">Kisi bhi ped, patti, phal, sabzi ya aushadhiya booti ki photo daalein.</p>
+                    <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Fast Network Optimization Active</h2>
+                    <p class="text-xs text-gray-300">Har prakar ki patti, sabzi (jaise Tamatar, Karela), phal ya booti ko instant scan karein.</p>
                 </div>
             </div>
-            <span class="hidden md:inline-block text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full">Database Sync Active</span>
+            <span class="hidden md:inline-block text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full">v4.0 Ultra Fast</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -98,7 +98,7 @@
                             📸
                         </div>
                         <p class="text-sm font-semibold text-gray-200">Camera Open Karein ya Gallery se चुनें</p>
-                        <p class="text-[11px] text-gray-400 mt-1">Paudhe, Patti, Phal ya Sabzi ki clear photo daalein</p>
+                        <p class="text-[11px] text-gray-400 mt-1">Paudhe, Patti, Sabzi ya Booti ki clear photo daalein</p>
                     </div>
 
                     <!-- Image Preview -->
@@ -110,14 +110,14 @@
                             </button>
                         </div>
                         <button id="scanBtn" onclick="analyzePlant()" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-2xl shadow-lg shadow-emerald-900/40 transition-all text-sm flex items-center justify-center gap-2">
-                            <span>🔍 Instant Global Scan</span>
+                            <span>🔍 Fast AI Scan Karein</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="mt-6 pt-4 border-t border-gray-800 text-[11px] text-gray-500 flex justify-between">
-                    <span>🔒 Safe & Encrypted</span>
-                    <span>🌐 Global Botanical API</span>
+                    <span>🔒 Compression Active</span>
+                    <span>⚡ Low-Bandwidth Mode</span>
                 </div>
             </div>
 
@@ -135,8 +135,8 @@
                         <div class="absolute inset-0 rounded-full border-4 border-emerald-500 border-t-transparent animate-spin"></div>
                     </div>
                     <div class="text-center">
-                        <p class="text-xs text-emerald-400 font-bold tracking-wide">Global Botanical Search chal raha hai...</p>
-                        <p class="text-[10px] text-gray-500 mt-1">Lakhon species mein se aapki patti match ki ja rahi hai</p>
+                        <p class="text-xs text-emerald-400 font-bold tracking-wide">AI Fast Processing chal raha hai...</p>
+                        <p class="text-[10px] text-gray-500 mt-1">Compressed Data Engine match kar raha hai</p>
                     </div>
                 </div>
 
@@ -168,25 +168,63 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-800 py-4 text-center text-xs text-gray-500">
-        <p>DesiBooti AI Pro © 2026. Powered by Global Botanical Intelligence Engine.</p>
+        <p>DesiBooti AI Pro © 2026. Ultra-Fast Multimodal Engine.</p>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Core Logic -->
     <script>
         let selectedFile = null;
 
         function handleImageSelect(event) {
             const file = event.target.files[0];
             if (file) {
-                selectedFile = file;
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('imagePreview').src = e.target.result;
-                    document.getElementById('dropZone').classList.add('hidden');
-                    document.getElementById('previewContainer').classList.remove('hidden');
-                }
-                reader.readAsDataURL(file);
+                // Resize image dynamically to prevent network timeouts
+                compressImage(file, 800, 800, 0.7, function(compressedBlob) {
+                    selectedFile = compressedBlob;
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('imagePreview').src = e.target.result;
+                        document.getElementById('dropZone').classList.add('hidden');
+                        document.getElementById('previewContainer').classList.remove('hidden');
+                    }
+                    reader.readAsDataURL(compressedBlob);
+                });
             }
+        }
+
+        function compressImage(file, maxWidth, maxHeight, quality, callback) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    let canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width = Math.round((width * maxHeight) / height);
+                            height = maxHeight;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('canvas');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    canvas.toBlob(function(blob) {
+                        callback(blob);
+                    }, 'image/jpeg', quality);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
         }
 
         function resetScanner() {
@@ -209,11 +247,10 @@
             document.getElementById('resultBox').classList.add('hidden');
 
             const formData = new FormData();
-            formData.append('images', selectedFile);
+            formData.append('images', selectedFile, 'plant.jpg');
             formData.append('organs', 'leaf');
 
             try {
-                // Call Global Botanical API
                 const response = await fetch(`https://my-api.plantnet.org/v2/identify/all?api-key=2b100N6s1lG6cnd6AOnT26lE`, {
                     method: 'POST',
                     body: formData
@@ -227,33 +264,28 @@
                     
                     if (data.results && data.results.length > 0) {
                         const topMatch = data.results[0];
-                        const scientificName = topMatch.species.scientificNameWithoutAuthor || "Unknown Botanical Species";
+                        const scientificName = topMatch.species.scientificNameWithoutAuthor || "Botanical Plant";
                         const matchScore = Math.round(topMatch.score * 100);
 
-                        // Extract Common Names
-                        let commonName = "";
-                        if (topMatch.species.commonNames && topMatch.species.commonNames.length > 0) {
-                            commonName = topMatch.species.commonNames.join(", ");
-                        } else {
-                            commonName = scientificName;
-                        }
+                        let commonName = (topMatch.species.commonNames && topMatch.species.commonNames.length > 0) 
+                            ? topMatch.species.commonNames[0] 
+                            : scientificName;
 
-                        // Family Name
-                        const family = topMatch.species.family ? topMatch.species.family.scientificNameWithoutAuthor : "Botanical Family";
+                        const family = topMatch.species.family ? topMatch.species.family.scientificNameWithoutAuthor : "Botanical Species";
 
                         renderReport(commonName, scientificName, family, matchScore);
 
                     } else {
-                        showError("Is photo mein kisi paudhe, patti ya phal ki pehchan nahi ho saki. Kripya paudhe ki saaf aur roshni wali photo upload karein.");
+                        showError("Is photo mein patti ya paudhe ki pehchan nahi ho saki. Kripya thoda paas se clear photo lein.");
                     }
                 } else {
-                    showError("Photo process nahi ho paayi. Kripya kisi doosre angle se saaf photo upload karke try karein.");
+                    showError("Server thoda busy hai. Kripya 2 second baad 'Fast AI Scan' button fir se dabayein.");
                 }
 
             } catch (err) {
                 document.getElementById('loading').classList.add('hidden');
                 document.getElementById('resultBox').classList.remove('hidden');
-                showError("Network issue aaya hai. Kripya apna internet connection check karke dobara koshish karein.");
+                showError("Network slow hone ke kaaran scan ruk gaya. Kripya dubara scan button dabayein.");
             }
         }
 
@@ -261,7 +293,7 @@
             document.getElementById('resultBox').innerHTML = `
                 <div class="text-center p-4">
                     <div class="w-12 h-12 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mx-auto mb-3 border border-amber-500/20">⚠️</div>
-                    <p class="text-amber-400 font-bold text-xs mb-1">Scan Result Warning</p>
+                    <p class="text-amber-400 font-bold text-xs mb-1">Scan Error</p>
                     <p class="text-gray-400 text-xs">${msg}</p>
                 </div>
             `;
@@ -273,30 +305,30 @@
             <div class="space-y-4 text-left w-full">
                 <div class="bg-emerald-500/10 border border-emerald-500/30 p-3.5 rounded-2xl flex justify-between items-center">
                     <div>
-                        <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">Identified Plant Species</span>
+                        <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">Identified Plant / Leaf</span>
                         <h4 class="text-gray-100 font-bold text-base mt-0.5">${name}</h4>
-                        <p class="text-[11px] text-gray-400 italic">Botanical: ${botanical} (${family})</p>
+                        <p class="text-[11px] text-gray-400 italic">Scientific: ${botanical} (${family})</p>
                     </div>
                     <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-xl font-bold border border-emerald-500/30">${score}% Match</span>
                 </div>
                 
                 <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>✨</span> Herbal & Botanical Properties:</h5>
+                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>✨</span> Herbal & Health Benefits:</h5>
                     <ul class="list-disc pl-4 text-gray-300 text-xs space-y-1">
-                        <li>Yeh paudha **${family}** species group se sambandhit hai.</li>
-                        <li>Prakritik roop se iski patti, tana aur aushadhiya tatva herbal chikitsa mein prayog hote hain.</li>
-                        <li>Pachan, khoon ko saaf karne aur ayurvedic balance ke liye upyogi.</li>
+                        <li>Yeh paudha **${name}** (${family}) species ka hai.</li>
+                        <li>Prakritik roop se pachan, khoon ki safai aur health boost karne mein sahayak.</li>
+                        <li>Ayurvedic aur herbal chikitsa mein iska vishesh mahatva hai.</li>
                     </ul>
                 </div>
 
                 <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>🍵</span> General Usage Guidelines:</h5>
-                    <p class="text-xs text-gray-300 bg-gray-900/50 p-2.5 rounded-xl border border-gray-800">Taaza pattiya ya ras nikal kar ayurvedic chikitsak ki dekhbhal mein hi prayog karein.</p>
+                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>🍵</span> Usage Guidelines:</h5>
+                    <p class="text-xs text-gray-300 bg-gray-900/50 p-2.5 rounded-xl border border-gray-800">Taaza pattiya/ras ka sevan ayurvedic practitioner ki dekhbhal mein hi karein.</p>
                 </div>
 
                 <div class="bg-red-500/10 border border-red-500/30 p-3.5 rounded-2xl">
-                    <h5 class="text-xs font-bold text-red-400 flex items-center gap-1.5 mb-1"><span>⚠️</span> Important Advice:</h5>
-                    <p class="text-[11px] text-red-200">Kisi bhi anjaan ya jungle ki patti ko bina certified ayurvedic expert ke salah ke seedhe sevan na karein.</p>
+                    <h5 class="text-xs font-bold text-red-400 flex items-center gap-1.5 mb-1"><span>⚠️</span> Advice:</h5>
+                    <p class="text-[11px] text-red-200">Kisi bhi aushadhi ke roop mein istemal karne se pehle chikitsak ki salah zaroor lein.</p>
                 </div>
 
                 <button onclick="saveToHistory('${name}', '${botanical}')" class="w-full py-2.5 bg-gray-800 hover:bg-gray-700 text-emerald-400 border border-emerald-500/20 text-xs rounded-xl font-semibold transition flex items-center justify-center gap-1.5">
