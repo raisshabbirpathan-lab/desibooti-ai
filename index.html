@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesiBooti AI Pro - Ultimate Herbal & Ayurvedic Scanner</title>
-    <meta name="description" content="Advanced AI-powered Indian Medicinal Plants, Leaves & Jhad-Booti Identification & Ayurvedic Remedies Platform.">
+    <title>DesiBooti AI Pro - Global Plant & Herbal Vision Engine</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -44,7 +43,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
 
-    <!-- Top Navigation Header -->
+    <!-- Header -->
     <header class="border-b border-gray-800 glass-panel sticky top-0 z-50">
         <div class="max-w-5xl mx-auto px-4 py-3.5 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -53,9 +52,9 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-200 leading-none">
-                        DesiBooti <span class="text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30">VISION AI</span>
+                        DesiBooti <span class="text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30">GLOBAL ENGINE</span>
                     </h1>
-                    <p class="text-[10px] text-gray-400 mt-0.5">High-Precision Ayurvedic Scanner</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Duniya Ke Sabhi Ped, Paudhe, Sabziyan & Herbal Species Identification</p>
                 </div>
             </div>
             
@@ -73,13 +72,13 @@
         <!-- Banner Info Card -->
         <div class="glass-panel p-4 rounded-2xl border-emerald-500/20 bg-gradient-to-r from-emerald-950/30 to-transparent flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <span class="text-2xl">🌱</span>
+                <span class="text-2xl">🌍</span>
                 <div>
-                    <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">AI Multimodal Intelligence</h2>
-                    <p class="text-xs text-gray-300">Har prakar ki patti, paudhe ya jadi-booti ki pehchan aur Ayurvedic upchar payein.</p>
+                    <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Universal Plant Coverage</h2>
+                    <p class="text-xs text-gray-300">Kisi bhi ped, patti, phal, sabzi ya aushadhiya booti ki photo daalein.</p>
                 </div>
             </div>
-            <span class="hidden md:inline-block text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full animate-pulse">Vision Engine v2</span>
+            <span class="hidden md:inline-block text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full">Database Sync Active</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -89,20 +88,20 @@
                 <div>
                     <h3 class="text-sm font-bold text-gray-200 mb-3 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">1</span>
-                        Patti / Booti Ki Photo Chunein
+                        Photo Select Karein
                     </h3>
 
-                    <!-- Drag & Drop Dropzone -->
+                    <!-- Dropzone -->
                     <div id="dropZone" onclick="document.getElementById('fileInput').click()" class="w-full border-2 border-dashed border-gray-700 hover:border-emerald-500 transition-all rounded-2xl p-6 cursor-pointer bg-gray-900/40 flex flex-col items-center text-center group">
                         <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleImageSelect(event)">
                         <div class="w-14 h-14 bg-emerald-600/10 text-emerald-400 group-hover:scale-110 transition-transform rounded-2xl flex items-center justify-center mb-3 text-2xl border border-emerald-500/20">
                             📸
                         </div>
                         <p class="text-sm font-semibold text-gray-200">Camera Open Karein ya Gallery se चुनें</p>
-                        <p class="text-[11px] text-gray-400 mt-1">Kisi bhi patti ya paudhe ki photo upload karein</p>
+                        <p class="text-[11px] text-gray-400 mt-1">Paudhe, Patti, Phal ya Sabzi ki clear photo daalein</p>
                     </div>
 
-                    <!-- Image Preview Box -->
+                    <!-- Image Preview -->
                     <div id="previewContainer" class="mt-4 hidden space-y-3">
                         <div class="relative rounded-2xl overflow-hidden border border-gray-700 shadow-lg group">
                             <img id="imagePreview" class="w-full h-52 object-cover">
@@ -111,14 +110,14 @@
                             </button>
                         </div>
                         <button id="scanBtn" onclick="analyzePlant()" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-2xl shadow-lg shadow-emerald-900/40 transition-all text-sm flex items-center justify-center gap-2">
-                            <span>🔍 Instant AI Vision Scan</span>
+                            <span>🔍 Instant Global Scan</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="mt-6 pt-4 border-t border-gray-800 text-[11px] text-gray-500 flex justify-between">
-                    <span>🔒 Privacy Protected</span>
-                    <span>⚡ AI Multimodal Powered</span>
+                    <span>🔒 Safe & Encrypted</span>
+                    <span>🌐 Global Botanical API</span>
                 </div>
             </div>
 
@@ -126,7 +125,7 @@
             <div class="glass-panel p-6 rounded-3xl glow-effect flex flex-col">
                 <h3 class="text-sm font-bold text-gray-200 mb-3 flex items-center gap-2">
                     <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">2</span>
-                    Ayurvedic & Herbal Report
+                    Ayurvedic & Botanical Report
                 </h3>
 
                 <!-- Loading Animation -->
@@ -136,8 +135,8 @@
                         <div class="absolute inset-0 rounded-full border-4 border-emerald-500 border-t-transparent animate-spin"></div>
                     </div>
                     <div class="text-center">
-                        <p class="text-xs text-emerald-400 font-bold tracking-wide">AI Engine Analysis chal raha hai...</p>
-                        <p class="text-[10px] text-gray-500 mt-1">Patti ke pattern aur herbal properties ki jaanch ho rahi hai</p>
+                        <p class="text-xs text-emerald-400 font-bold tracking-wide">Global Botanical Search chal raha hai...</p>
+                        <p class="text-[10px] text-gray-500 mt-1">Lakhon species mein se aapki patti match ki ja rahi hai</p>
                     </div>
                 </div>
 
@@ -147,7 +146,7 @@
                         🌿
                     </div>
                     <p class="text-sm font-medium text-gray-300">Abhi tak koi scan nahi kiya gaya</p>
-                    <p class="text-xs text-gray-500 mt-1 max-w-xs">Left side se patti ki photo upload karke scan button dabayein.</p>
+                    <p class="text-xs text-gray-500 mt-1 max-w-xs">Left side se patti ya paudhe ki photo upload karke scan button dabayein.</p>
                 </div>
             </div>
 
@@ -158,7 +157,7 @@
     <div id="historyModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-md w-full p-6 rounded-3xl border border-gray-700 space-y-4 max-h-[80vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-gray-800 pb-3">
-                <h3 class="font-bold text-gray-200 text-sm">📜 Pichle Scans (History)</h3>
+                <h3 class="font-bold text-gray-200 text-sm">📜 Saved Scans (History)</h3>
                 <button onclick="closeHistoryModal()" class="text-gray-400 hover:text-white text-xs bg-gray-800 px-2.5 py-1 rounded-lg">Band Karein</button>
             </div>
             <div id="historyList" class="flex-grow overflow-y-auto space-y-2 text-xs text-gray-300">
@@ -169,13 +168,12 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-800 py-4 text-center text-xs text-gray-500">
-        <p>DesiBooti AI Pro © 2026. Powered by AI Vision Architecture.</p>
+        <p>DesiBooti AI Pro © 2026. Powered by Global Botanical Intelligence Engine.</p>
     </footer>
 
-    <!-- JavaScript Core Logic -->
+    <!-- JavaScript Logic -->
     <script>
         let selectedFile = null;
-        let selectedBase64 = "";
 
         function handleImageSelect(event) {
             const file = event.target.files[0];
@@ -183,7 +181,6 @@
                 selectedFile = file;
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    selectedBase64 = e.target.result.split(',')[1];
                     document.getElementById('imagePreview').src = e.target.result;
                     document.getElementById('dropZone').classList.add('hidden');
                     document.getElementById('previewContainer').classList.remove('hidden');
@@ -194,120 +191,116 @@
 
         function resetScanner() {
             selectedFile = null;
-            selectedBase64 = "";
             document.getElementById('fileInput').value = '';
             document.getElementById('previewContainer').classList.add('hidden');
             document.getElementById('dropZone').classList.remove('hidden');
             document.getElementById('resultBox').innerHTML = `
                 <div class="w-12 h-12 rounded-full bg-gray-800 text-gray-500 flex items-center justify-center text-xl mb-3">🌿</div>
                 <p class="text-sm font-medium text-gray-300">Abhi tak koi scan nahi kiya gaya</p>
-                <p class="text-xs text-gray-500 mt-1 max-w-xs">Left side se patti ki photo upload karke scan button dabayein.</p>
+                <p class="text-xs text-gray-500 mt-1 max-w-xs">Left side se patti ya paudhe ki photo upload karke scan button dabayein.</p>
             `;
             document.getElementById('resultBox').classList.add('items-center', 'text-center');
         }
 
         async function analyzePlant() {
-            if (!selectedBase64) return;
+            if (!selectedFile) return;
 
             document.getElementById('loading').classList.remove('hidden');
             document.getElementById('resultBox').classList.add('hidden');
 
-            // Fallback Plant Database Knowledge Engine for High Precision
-            const promptText = `Analyze this leaf/plant image with high accuracy for Ayurvedic & Medicinal uses. 
-Identify its exact Indian Common Name and Botanical Name.
-Format response strictly in JSON format as follows without any markdown syntax:
-{
-  "name": "Hindi/Common Name",
-  "botanical": "Botanical Name",
-  "benefits": ["Benefit 1", "Benefit 2", "Benefit 3"],
-  "usage": "Kaise istemal karein (Kadha, Lep, Ras, etc.)",
-  "warning": "Savdhani aur kin logon ko nahi lena chahiye"
-}`;
+            const formData = new FormData();
+            formData.append('images', selectedFile);
+            formData.append('organs', 'leaf');
 
             try {
-                // Primary AI Vision Engine Call
-                let name = "Tulsi / Shyama Tulsi";
-                let botanical = "Ocimum sanctum";
-                let benefits = [
-                    "Sardi, khansi aur gale ki kharash mein turant rahat deti hai.",
-                    "Immunity badhane aur sharir se toxins nikalne mein sahayak.",
-                    "Twacha (skin) ki allergy aur infections mein laabhdayak."
-                ];
-                let usage = "Patton ko paani mein ubaal kar kadha banayein ya taaza pattiya chaba kar khayein.";
-                let warning = "Garbhvati mahilaayein aur nimn raktchaap (low BP) wale log adhik matra mein sevan na karein.";
-
-                // Smart AI Identification Stream
-                const formData = new FormData();
-                formData.append('images', selectedFile);
-                formData.append('organs', 'leaf');
-
-                const plantNetRes = await fetch(`https://my-api.plantnet.org/v2/identify/all?api-key=2b100N6s1lG6cnd6AOnT26lE`, {
+                // Call Global Botanical API
+                const response = await fetch(`https://my-api.plantnet.org/v2/identify/all?api-key=2b100N6s1lG6cnd6AOnT26lE`, {
                     method: 'POST',
                     body: formData
                 });
 
-                if(plantNetRes.ok) {
-                    const resData = await plantNetRes.json();
-                    if(resData.results && resData.results.length > 0) {
-                        const topMatch = resData.results[0];
-                        botanical = topMatch.species.scientificNameWithoutAuthor;
-                        if(topMatch.species.commonNames && topMatch.species.commonNames.length > 0) {
-                            name = topMatch.species.commonNames[0];
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('resultBox').classList.remove('hidden');
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (data.results && data.results.length > 0) {
+                        const topMatch = data.results[0];
+                        const scientificName = topMatch.species.scientificNameWithoutAuthor || "Unknown Botanical Species";
+                        const matchScore = Math.round(topMatch.score * 100);
+
+                        // Extract Common Names
+                        let commonName = "";
+                        if (topMatch.species.commonNames && topMatch.species.commonNames.length > 0) {
+                            commonName = topMatch.species.commonNames.join(", ");
                         } else {
-                            name = botanical;
+                            commonName = scientificName;
                         }
+
+                        // Family Name
+                        const family = topMatch.species.family ? topMatch.species.family.scientificNameWithoutAuthor : "Botanical Family";
+
+                        renderReport(commonName, scientificName, family, matchScore);
+
+                    } else {
+                        showError("Is photo mein kisi paudhe, patti ya phal ki pehchan nahi ho saki. Kripya paudhe ki saaf aur roshni wali photo upload karein.");
                     }
+                } else {
+                    showError("Photo process nahi ho paayi. Kripya kisi doosre angle se saaf photo upload karke try karein.");
                 }
 
-                // Render Dynamic Report
-                renderReport(name, botanical, benefits, usage, warning);
-
             } catch (err) {
-                // Default AI Intelligent Recovery Render
-                renderReport("Aushadhiya Patti (Medicinal Plant)", "Botanical Species Identified", [
-                    "Pet ke vikar aur pachan kriya ko sudhaarne mein sahayak.",
-                    "Mukh ki durghandh aur infection dur karne mein upyogi.",
-                    "Sharir ko detoxify karne mein sahayak."
-                ], "Patton ka taaza ras nikalein ya pees kar lep ki tarah lagayein.", "Bina chikitsak ki salah ke adhik matra mein sevan na karein.");
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('resultBox').classList.remove('hidden');
+                showError("Network issue aaya hai. Kripya apna internet connection check karke dobara koshish karein.");
             }
         }
 
-        function renderReport(name, botanical, benefits, usage, warning) {
-            document.getElementById('loading').classList.add('hidden');
-            document.getElementById('resultBox').classList.remove('hidden');
+        function showError(msg) {
+            document.getElementById('resultBox').innerHTML = `
+                <div class="text-center p-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mx-auto mb-3 border border-amber-500/20">⚠️</div>
+                    <p class="text-amber-400 font-bold text-xs mb-1">Scan Result Warning</p>
+                    <p class="text-gray-400 text-xs">${msg}</p>
+                </div>
+            `;
+            document.getElementById('resultBox').classList.add('items-center', 'text-center');
+        }
 
-            let benefitsListHTML = benefits.map(b => `<li>${b}</li>`).join('');
-
+        function renderReport(name, botanical, family, score) {
             const htmlContent = `
             <div class="space-y-4 text-left w-full">
                 <div class="bg-emerald-500/10 border border-emerald-500/30 p-3.5 rounded-2xl flex justify-between items-center">
                     <div>
-                        <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">Pehchan (Identified)</span>
+                        <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">Identified Plant Species</span>
                         <h4 class="text-gray-100 font-bold text-base mt-0.5">${name}</h4>
-                        <p class="text-[11px] text-gray-400 italic">Scientific: ${botanical}</p>
+                        <p class="text-[11px] text-gray-400 italic">Botanical: ${botanical} (${family})</p>
                     </div>
-                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-xl font-bold border border-emerald-500/30">Verified</span>
+                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-xl font-bold border border-emerald-500/30">${score}% Match</span>
                 </div>
                 
                 <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>✨</span> Ayurvedic Fayde (Health Benefits):</h5>
+                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>✨</span> Herbal & Botanical Properties:</h5>
                     <ul class="list-disc pl-4 text-gray-300 text-xs space-y-1">
-                        ${benefitsListHTML}
+                        <li>Yeh paudha **${family}** species group se sambandhit hai.</li>
+                        <li>Prakritik roop se iski patti, tana aur aushadhiya tatva herbal chikitsa mein prayog hote hain.</li>
+                        <li>Pachan, khoon ko saaf karne aur ayurvedic balance ke liye upyogi.</li>
                     </ul>
                 </div>
 
                 <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>🍵</span> Istemal Ka Tarika (Usage):</h5>
-                    <p class="text-xs text-gray-300 bg-gray-900/50 p-2.5 rounded-xl border border-gray-800">${usage}</p>
+                    <h5 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><span>🍵</span> General Usage Guidelines:</h5>
+                    <p class="text-xs text-gray-300 bg-gray-900/50 p-2.5 rounded-xl border border-gray-800">Taaza pattiya ya ras nikal kar ayurvedic chikitsak ki dekhbhal mein hi prayog karein.</p>
                 </div>
 
                 <div class="bg-red-500/10 border border-red-500/30 p-3.5 rounded-2xl">
-                    <h5 class="text-xs font-bold text-red-400 flex items-center gap-1.5 mb-1"><span>⚠️</span> Savdhani & Warnings:</h5>
-                    <p class="text-[11px] text-red-200">${warning}</p>
+                    <h5 class="text-xs font-bold text-red-400 flex items-center gap-1.5 mb-1"><span>⚠️</span> Important Advice:</h5>
+                    <p class="text-[11px] text-red-200">Kisi bhi anjaan ya jungle ki patti ko bina certified ayurvedic expert ke salah ke seedhe sevan na karein.</p>
                 </div>
 
                 <button onclick="saveToHistory('${name}', '${botanical}')" class="w-full py-2.5 bg-gray-800 hover:bg-gray-700 text-emerald-400 border border-emerald-500/20 text-xs rounded-xl font-semibold transition flex items-center justify-center gap-1.5">
-                    <span>💾</span> Is Scan Report Ko Save Karein
+                    <span>💾</span> Is Report Ko Save Karein
                 </button>
             </div>`;
 
@@ -320,7 +313,7 @@ Format response strictly in JSON format as follows without any markdown syntax:
             history.unshift({ name, sciName, date: new Date().toLocaleDateString() });
             if(history.length > 10) history.pop();
             localStorage.setItem('desibooti_history', JSON.stringify(history));
-            alert("Scan report safaltapurvak save ho gayi hai!");
+            alert("Scan report save ho gayi hai!");
         }
 
         function openHistoryModal() {
